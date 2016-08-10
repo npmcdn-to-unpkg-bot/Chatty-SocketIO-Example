@@ -24,7 +24,7 @@ To run this app:
 4. navigate to the server directory and run `npm install -g express` to install express as a global module
 5. run `npm install -g typescript` to install typescript as a global module
 6. run `npm install` to install the server-side node modules
-7. launch the application from the server folder as `node app.js`
+7. launch the application from the server folder as `node app.js`.
 8. Use your browser to navigate to http://localhost:8079
 
- [1]https://www.thepolyglotdeveloper.com/2016/01/create-a-real-time-chat-application-with-the-cean-stack-and-socket-io/.
+[1]: https://www.thepolyglotdeveloper.com/2016/01/create-a-real-time-chat-application-with-the-cean-stack-and-socket-io/.
