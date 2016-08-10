@@ -1,0 +1,20 @@
+{
+  "name": "chatty-server",
+  "version": "1.0.0",
+  "description": "Server side of the demo Socket-Io chat application",
+  "keywords": [
+        "express",
+        "socket-io"
+  ],
+  "author": "Steven Joseph Luke",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.14.0",
+    "socket.io": "1.4.8",
+    "uuid": "2.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "2.0.0",
+    "typescript": "1.8.10"
+  }
+}
