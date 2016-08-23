@@ -1,25 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Chatter } from '../services/chatter';
-
-
-class chat {
-    subscribe(func) { func("subscribed"); }
-}
 
 @Component({
     selector: 'default',
-    templateUrl: './app/default/default.html'
+    templateUrl: 'src/default/default.html'
 })
 export class DefaultPage {
     private messages: string[] = [];
     private chatBox: string = "";
-    private socket: any;
-    private chatter : Chatter;
     
-    constructor(chat : Chatter) { this.chatter = chat; }
+    constructor(@Inject(Chatter) private chatter : Chatter) { }
     
     ngOnInit() {
-        this.chatter.subscribe(this.receive());
+        this.chatter.connect().subscribe(message => this.messages.push(message));
     }
     
     send(message: string) {
@@ -28,7 +21,8 @@ export class DefaultPage {
     }
     
     receive() {
+        console.log("hooking in");
         let localMsgs = this.messages;
-        return function (message : string) { localMsgs.push(message) };
+        return function (message : string) { console.log("getting: " + message); localMsgs.push(message) };
     }
 }

@@ -1,10 +1,4 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { provide } from '@angular/core';
-import { AppComponent } from './app/app';
-import { Chatter } from './app/services/chatter';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-//let chat : Chatter = new Chatter();
-
-bootstrap(AppComponent, [
-    provide(Chatter, {useClass: Chatter}),
-]);
+import { AppModule } from './src/app.module';
+platformBrowserDynamic().bootstrapModule(AppModule);

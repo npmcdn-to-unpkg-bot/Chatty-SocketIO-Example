@@ -9,23 +9,19 @@ export class Chatter {
     private subject : Subject = new Subject();
     
     constructor() {
-    console.log("creating chatter");
-    try {
-        this.socket = io();
-        this.socket.on(this.chatPath, (message) => {
-            this.subject.next(message);
-        });
-    } catch (err) { console.error(err); }
-    console.log("created chatter");
-    console.log(this.subject);
+        try {
+            this.socket = io();
+            this.socket.on(this.chatPath, (message) => {
+                this.subject.next(message);
+            });
+        } catch (err) { console.error(err); }
     }
     
-    subscribe(client : any) {
-        this.subject.subscribe(client);
+    connect() {
+        return this.subject;
     }
     
     send(message: string) {
-    console.log(message);
         this.socket.emit(this.chatPath, message);
     }
 }
