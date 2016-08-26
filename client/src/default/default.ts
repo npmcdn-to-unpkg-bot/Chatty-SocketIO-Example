@@ -1,28 +1,29 @@
-import { Component, Inject } from '@angular/core';
-import { Chatter } from '../services/chatter';
+import { Component } from '@angular/core';
+import { Chatter }   from '../services/chatter';
 
 @Component({
-    selector: 'default',
+    selector:    'default',
     templateUrl: 'src/default/default.html'
 })
 export class DefaultPage {
     private messages: string[] = [];
-    private chatBox: string = "";
+    private chatBox:  string   = "";
     
-    constructor(@Inject(Chatter) private chatter : Chatter) { }
+    constructor(private chatter : Chatter) { }
     
-    ngOnInit() {
-        this.chatter.connect().subscribe(message => this.messages.push(message));
+    ngOnInit(): void {
+        let localMessages:string[] = this.messages;
+        this.chatter.connect().subscribe(
+          (message:string) => { localMessages.push(message); }
+        );
     }
     
-    send(message: string) {
+    send(message: string): void {
         this.chatter.send(message);
         this.chatBox = "";
     }
     
-    receive() {
-        console.log("hooking in");
-        let localMsgs = this.messages;
-        return function (message : string) { console.log("getting: " + message); localMsgs.push(message) };
+    messageRecieved(message:string):void {
+        this.messages.push(message);
     }
 }

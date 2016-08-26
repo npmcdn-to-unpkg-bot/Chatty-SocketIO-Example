@@ -5,23 +5,30 @@ declare var io: any;
 @Injectable()
 export class Chatter {
     private chatPath : string = "chat-message";
-    private socket : any;
-    private subject : Subject = new Subject();
+    private socket   : any;
+    private subject  : Subject<string>;
     
     constructor() {
+        this.subject = new Subject<string>();
+        let localSubject : Subject<string> = this.subject;
+        console.log(this.subject);
         try {
             this.socket = io();
-            this.socket.on(this.chatPath, (message) => {
-                this.subject.next(message);
-            });
-        } catch (err) { console.error(err); }
+            this.socket.on(
+              this.chatPath, 
+              (message:string) => { 
+                console.info(message);
+                console.info(localSubject);
+                localSubject.next(message);
+              });
+        } catch (err:any) { console.error(err); }
     }
     
-    connect() {
+    connect() : Observable<string> {
         return this.subject;
     }
     
-    send(message: string) {
+    send(message: string) : void {
         this.socket.emit(this.chatPath, message);
     }
 }
