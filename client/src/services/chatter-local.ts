@@ -2,16 +2,12 @@ import { Injectable } from '@angular/core';
 import { Subject    } from 'rxjs/Subject';
 import { Chatter    } from './chatter';
 
+@Injectable()
 export class ChatterLocal extends Chatter {
-    private subject : Subject = new Subject();
     
-    constructor() { }
-    
-    connect() {
-        return this.subject;
-    }
+    constructor() { super(); }
     
     send(message: string) {
-        this.subject.next(message);
+        this.chatMessages.push(message);
     }
 }

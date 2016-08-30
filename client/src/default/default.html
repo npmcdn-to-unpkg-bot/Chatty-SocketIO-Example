@@ -1,7 +1,7 @@
 <ul id="mess">
-  <li *ngFor="let message of messages">{{message}}</li>
+  <li *ngFor="let message of chatter.chatMessages">{{message}}</li>
 </ul>
 <div class="textInput">
-  <input [(ngModel)]="chatBox">
-  <button (click)="send(chatBox)" type="button">Send</button>
+  <input [(ngModel)]="chatBox" (keyup)="onKeyUp($event)">
+  <button (click)="onSend(chatBox)" type="button">Send</button>
 </div>

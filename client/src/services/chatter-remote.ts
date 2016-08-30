@@ -1,26 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone, Inject } from '@angular/core';
 import { Subject    } from 'rxjs/Subject';
 import { Chatter    } from './chatter';
 declare var io: any;
 
+@Injectable()
 export class ChatterRemote extends Chatter {
     private chatPath : string = "chat-message";
     private socket : any;
-    private subject : Subject = new Subject();
     
-    constructor() {
+    constructor(@Inject(NgZone) private zone: NgZone) {
+        super();
         try {
             this.socket = io();
-            this.socket.on(this.chatPath, (message) => {
-              this.subject.next(message);
+            this.socket.on(this.chatPath, (message:string) => {
+              this.messageRecieved(message);
             });
         } catch (err) { console.error(err); }
     }
     
-    connect() {
-        return this.subject;
+    messageRecieved(message:string) {
+        this.zone.run( () => { this.chatMessages.push(message); } );
     }
-    
+
     send(message: string) {
         this.socket.emit(this.chatPath, message);
     }

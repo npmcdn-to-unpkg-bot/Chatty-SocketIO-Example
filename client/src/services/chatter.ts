@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Subject    } from 'rxjs/Subject';
 
+@Injectable()
 export class Chatter {
-    private subject : Subject = new Subject();
+    private messages: string[] = [];
     
     constructor() { }
     
-    connect() {
-        return this.subject;
-    }
-    
     send(message: string) { }
+    
+    public get chatMessages() : string[] { 
+        return this.messages;
+    }
 }
