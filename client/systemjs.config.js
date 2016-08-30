@@ -1,8 +1,8 @@
 (function(global) {
 
   //Lock the angular version.
-  var ngVer     = '@2.0.0-rc.4';
-  var routerVer = '@3.0.0-beta.1';
+  var ngVer     = '@2.0.0-rc.5';
+  var routerVer = '@3.0.0-rc.1';
 
   //map tells the System loader where to look for things
   var  map = {
@@ -26,6 +26,7 @@
     'compiler',
     'core',
     'http',
+    'forms',
     'platform-browser',
     'platform-browser-dynamic',
     //'router-deprecated',
@@ -44,7 +45,7 @@
   });
 
   // No umd for router yet
-  packages['@angular/router'] = { main: 'index.js', defaultExtension: 'js' };
+  packages['@angular/router'] = { main: 'bundles/router.umd.js', defaultExtension: 'js' };
 
   var config = {
     // DEMO ONLY! REAL CODE SHOULD NOT TRANSPILE IN THE BROWSER

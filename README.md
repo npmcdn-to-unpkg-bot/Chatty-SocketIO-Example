@@ -12,7 +12,7 @@ This is a typical chat application demo used for demoning socket.io.
 This is not an original work, most of it originates
 from Nic Raboy and his blog example here: [link][1]
 That version of code did not work with current Angular2 versions, so
-I updated it to `Angular2.0.0-rc.4`.  I also changed it to use a service
+I updated it to `Angular2.0.0-rc.5`.  I also changed it to use a service
 to handle all the websocket communications, and remove the database
 so as to simplify things.
 
