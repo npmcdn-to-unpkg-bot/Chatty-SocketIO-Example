@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, NgZone } from '@angular/core';
 import { Chatter } from '../services/chatter';
 
 @Component({
@@ -9,20 +9,26 @@ export class DefaultPage {
     private messages: string[] = [];
     private chatBox: string = "";
     
-    constructor(@Inject(Chatter) private chatter : Chatter) { }
+    constructor(@Inject(Chatter)private chatter : Chatter, 
+                @Inject(NgZone)private zone: NgZone) { }
     
     ngOnInit() {
-        this.chatter.connect().subscribe(message => this.messages.push(message));
+        this.chatter.connect().subscribe(
+          (message:string) => {
+            this.receive(message);
+          });
     }
     
     send(message: string) {
         this.chatter.send(message);
         this.chatBox = "";
+        return true;
     }
     
-    receive() {
-        console.log("hooking in");
-        let localMsgs = this.messages;
-        return function (message : string) { console.log("getting: " + message); localMsgs.push(message) };
+    receive(message: string) {
+        this.zone.run(() => { 
+          console.log("Message recieved: " + message);
+          this.messages.push(message); 
+        });
     }
 }
