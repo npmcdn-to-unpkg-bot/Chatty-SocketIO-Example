@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject    } from 'rxjs/Subject';
-import { Chatter    } from './chatter';
+import { Chatter    } from './chatter.service';
 
 @Injectable()
 export class ChatterLocal extends Chatter {

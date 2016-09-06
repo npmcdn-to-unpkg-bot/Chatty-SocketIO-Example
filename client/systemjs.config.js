@@ -51,8 +51,13 @@
     // DEMO ONLY! REAL CODE SHOULD NOT TRANSPILE IN THE BROWSER
     transpiler: 'ts',
     typescriptOptions: {
-      tsconfig: true
-    },
+        module: "commonjs",
+        experimentalDecorators: true,
+        sourceMap: true,
+        emitDecoratorMetadata: true,
+        removeComments: false,
+        noImplicitAny: false
+      },
     meta: {
       'typescript': {
         "exports": "ts"

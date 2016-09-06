@@ -1,0 +1,14 @@
+    <div class="room-select">
+      <label for="userName">{{userNameLabel}}</label>
+        <input type="text" maxlength="64" autocomplete="off" pattern=".{1,64}" required
+               title="{{userInvalidMessage}}" #userInput
+               placeholder="{{userPlaceholder}}" name="userName" id="userName">
+      <div id="invalidUser" #invalidUser></div>
+      <button type="button" name="newRoom" id="newRoom" onClick="newRoom()" #newRoom>{{newRoomLabel}}</button>
+      <label for="roomName">{{roomNameLabel}}</label>
+        <input type="text" maxlength="8" autocomplet="off" size="8" pattern="[A-Za-z0-9]{8}" required
+               title="{{roomInvalidMessage}}" #roomInput
+               placeholder="{{roomPlaceholder}}" name="roomName" id="roomName">
+      <div id="invalidRoom" #invalidRoom></div>
+      <button type="button" name="joinRoom" onClick="joinRoom()" #joinRoom>{{joinRoomLabel}}</button>
+    </div>

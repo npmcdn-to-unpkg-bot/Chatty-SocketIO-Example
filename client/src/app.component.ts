@@ -1,13 +1,10 @@
-import { Component }        from "@angular/core";
-import { Router, Routes }   from '@angular/router';
+import { Component }      from "@angular/core";
+import { Router, Routes } from '@angular/router';
 
 @Component({
     selector: 'my-app',
-    templateUrl: 'src/app.html'
+    templateUrl: 'src/app.component.html'
 })
- 
-export class AppComponent {
- 
+export class AppComponent { 
     constructor() { }
- 
 }

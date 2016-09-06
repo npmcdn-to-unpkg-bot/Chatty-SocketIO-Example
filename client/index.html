@@ -4,14 +4,25 @@
     <base href="/">
     <title>Sample socket-io messaging</title>
     <style>
-        * { margin: 0px; padding: 0px; box-sizing: border-box; }
-        body { font: 13px Helvetica, Arial; }
-        .textInput { background: #000; padding: 3px; position: fixed; bottom:0px; width: 100%; }
-        input { border: 0px; padding: 10px; width: 90%; margin-right: 0.5%; }
-        button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px;}
-        #mess { list-style-type: none; margin:0px; padding: 0px; }
-        #mess li { padding: 5px 10px; }
-        #mess li:nth-child(odd) { background: #eee; }
+      * { 
+        margin: 0px; 
+        padding: 0px; 
+        box-sizing: border-box; 
+      }
+
+      html, body {
+        height: 100%; 
+        width: 100%;
+      }
+      body {
+        margin:0;
+        padding:0;
+        //display: flex;
+        //justify-content: stretch;
+        //align-items: stretch;
+        background: #EEE;
+        font: 13px Helvetica, Arial;
+      }
     </style>
     
     <script src="node_modules/zone.js/dist/zone.js"></script>
