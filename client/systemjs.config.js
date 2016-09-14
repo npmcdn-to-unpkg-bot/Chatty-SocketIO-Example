@@ -11,7 +11,7 @@
     '@angular':                   'node_modules/@angular', // sufficient if we didn't pin the version
     '@angular/router':            'node_modules/@angular/router',
     'rxjs':                       'node_modules/rxjs',
-    'ts':                         'https://npmcdn.com/plugin-typescript@4.0.10/lib/plugin.js',
+    'ts':                         'https://unpkg.com/plugin-typescript@4.0.10/lib/plugin.js',
     'typescript':                 'node_modules/typescript/lib/typescript.js',
  };
 
